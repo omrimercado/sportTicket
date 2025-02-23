@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<AnchorPane  prefWidth="1400" prefHeight="800" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.sporticket.finalgui.HelloController">
+    <stylesheets>
+        <URL value="@style.css" />
+    </stylesheets>
+
+    <children>
+        <!-- Title -->
+        <Label text="SPORTICKETS" layoutX="550" layoutY="50" styleClass="title" />
+        <VBox fx:id="start" alignment="CENTER" spacing="40" layoutX="400" layoutY="200">
+
+
+            <HBox alignment="CENTER" spacing="50">
+                <Button fx:id="btnLogin" onAction="#showLoginSection" styleClass="primary-btn" text="LOGIN" />
+                <Button fx:id="btnSignUp" onAction="#showSignUpSection" styleClass="primary-btn" text="SIGNUP" />
+            </HBox>
+        </VBox>
+
+        <!-- Login Section -->
+        <VBox fx:id="loginSection" alignment="CENTER" spacing="20" layoutX="500" layoutY="200">
+            <TextField fx:id="usernameField" promptText="USERNAME" styleClass="text-field" />
+            <PasswordField fx:id="passwordField" promptText="PASSWORD" styleClass="text-field" />
+            <Button text="LOGIN" onAction="#handleLogin" styleClass="primary-btn" />
+            <Button text="NOT A USER? SIGNUP" onAction="#showSignUpSection" styleClass="secondary-btn" layoutX="50" layoutY="500" />
+            <Label fx:id="loginError" text="" visible="false"/>
+
+        </VBox>
+
+        <!-- Signup Section -->
+        <VBox fx:id="signUpSection" alignment="CENTER" spacing="20" layoutX="500" layoutY="200" visible="false">
+            <TextField fx:id="newUsernameField" promptText="USERNAME" styleClass="text-field" />
+            <PasswordField fx:id="newPasswordField" promptText="PASSWORD" styleClass="text-field" />
+            <TextField fx:id="fullNameField" promptText="FULL NAME" styleClass="text-field" />
+            <TextField fx:id="emailField" promptText="EMAIL" styleClass="text-field" />
+            <TextField fx:id="phoneNumberField" promptText="PHONE-NUMBER" styleClass="text-field" />
+            <Button text="REGISTER" onAction="#handleSignUp" styleClass="primary-btn" />
+            <Button text="ALREADY USER? LOGIN" onAction="#showLoginSection" styleClass="secondary-btn" layoutX="50" layoutY="500" />
+        </VBox>
+
+        <!-- Main Dashboard -->
+        <VBox fx:id="dashboardSection" alignment="CENTER" spacing="20" layoutX="500" layoutY="200" visible="false">
+            <Label fx:id="userGreeting" text="HELLO, FULLNAME" styleClass="user-greeting" layoutX="1100" layoutY="50" />
+            <Button text="BUY TICKET" onAction="#showBuySection" styleClass="primary-btn" />
+            <Button text="SELL TICKET" onAction="#showSellSection" styleClass="primary-btn" />
+            <Button text="LOGOUT" onAction="#handleLogout" styleClass="secondary-btn" layoutX="50" layoutY="700" />
+        </VBox>
+
+        <!-- Buy Ticket Section -->
+        <VBox fx:id="buySection" alignment="CENTER" spacing="20" layoutX="500" layoutY="200" visible="false">
+            <Label text="Buy ticket" styleClass="label" />
+            <TextField fx:id="searchField" promptText="Event name" styleClass="text-field" />
+            <Button text="SEARCH" onAction="#handleSearch" styleClass="primary-btn" />
+            <Label fx:id="searchError" visible="false" layoutX="50.0" layoutY="150.0" text="there is an error" textFill="RED" style="-fx-font-weight: bold;" />
+            <TableView fx:id="ticketTable" visible="false" prefWidth="950" prefHeight="250">
+                <columns>
+                    <TableColumn fx:id="eventColumn" text="Event"/>
+                    <TableColumn fx:id="dateColumn" text="Date"/>
+                    <TableColumn fx:id="priceColumn" text="Price"/>
+                    <TableColumn fx:id="gateColumn" text="Gate"/>
+                    <TableColumn fx:id="actionColumn" text="Action" />
+                </columns>
+            </TableView>
+            <Button text="BACK" onAction="#handleLogin" styleClass="secondary-btn" layoutX="1100" layoutY="600" />
+        </VBox>
+
+        <!-- Sell Ticket Section -->
+        <VBox fx:id="sellSection" alignment="CENTER" spacing="20" layoutX="500" layoutY="200" visible="false">
+            <Label text="Sell ticket" styleClass="label" />
+            <TextField fx:id="eventNameField" promptText="EVENT" styleClass="text-field" />
+            <TextField fx:id="eventDateField" promptText="DATE" styleClass="text-field" />
+            <TextField fx:id="eventGateField" promptText="GATE" styleClass="text-field" />
+            <TextField fx:id="eventPriceField" promptText="PRICE" styleClass="text-field" />
+            <Button text="POST" onAction="#handleSell" styleClass="primary-btn" />
+            <Button text="BACK" onAction="#handleLogin" styleClass="secondary-btn" layoutX="1100" layoutY="600" />
+            <Label fx:id="sellError" visible="false" layoutX="50.0" layoutY="150.0" text="there is an error" textFill="RED" style="-fx-font-weight: bold;" />
+        </VBox>
+
+        <!-- Admin Panel -->
+        <VBox fx:id="adminPanel" alignment="CENTER" spacing="20" layoutX="500" layoutY="200" visible="false">
+            <Label fx:id="adminGreeting" text="HELLO, FULLNAME (ADMIN)" styleClass="user-greeting" layoutX="1100" layoutY="50" />
+            <Button text="USERS" onAction="#handleGetAllUsers" styleClass="primary-btn" />
+            <Button text="TICKETS" onAction="#handleGetAllTickets"   styleClass="primary-btn" />
+            <Button text="EVENTS"  styleClass="primary-btn" />
+            <Button text="LOGOUT" onAction="#handleLogout" styleClass="secondary-btn" layoutX="50" layoutY="700" />
+        </VBox>
+        <BorderPane fx:id="usersSection" visible="false"  AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                    AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+            <center>
+
+        <VBox alignment="CENTER" spacing="20" style="-fx-padding: 20;">
+            <Label  text="All Users" styleClass="label-message" />
+            <TableView fx:id="userTable" prefWidth="600" prefHeight="300">
+                <columns>
+                    <TableColumn fx:id="usernameColumn" text="Username" />
+                    <TableColumn fx:id="fullNameColumn" text="Full Name" />
+                    <TableColumn fx:id="emailColumn" text="Email" />
+                    <TableColumn fx:id="phoneColumn" text="Phone" />
+                    <TableColumn fx:id="adminColumn" text="Admin" />
+                    <TableColumn fx:id="deleteColumn" text="Action" />
+                </columns>
+            </TableView>
+            <Button text="BACK" onAction="#handleLogin" styleClass="secondary-btn"/>
+
+
+        </VBox>
+        </center>
+        </BorderPane>
+        <StackPane fx:id="tickets" xmlns:fx="http://javafx.com/fxml" visible="false" alignment="CENTER"
+                   AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                   AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+
+            <VBox fx:id="Tickets" alignment="CENTER" spacing="20" style="-fx-padding: 20;">
+                <Label text="All Tickets" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+                <TableView fx:id="allTicketsTable" prefWidth="600" prefHeight="300">
+                    <columns>
+                        <TableColumn fx:id="TicketNameColumn" text="Event Name" />
+                        <TableColumn fx:id="dateTicketColumn" text="Date" />
+                        <TableColumn fx:id="priceTicketColumn" text="Price" />
+                        <TableColumn fx:id="gateTicketColumn" text="Gate" />
+                        <TableColumn fx:id="usernameTicketColumn" text="Username" />
+                    </columns>
+                </TableView>
+                <Button text="BACK" onAction="#handleLogin" styleClass="secondary-btn" />
+            </VBox>
+        </StackPane>
+
+        <VBox fx:id="eventsPanel" alignment="CENTER" spacing="20" layoutX="500" layoutY="200" visible="false">
+            <Button text="ADD" styleClass="primary-btn" />
+            <Button text="LIST OF EVENTS" styleClass="primary-btn" />
+            <Button text="BACK" onAction="#handleLogin" styleClass="secondary-btn"/>
+        </VBox>
+
+    </children>
+</AnchorPane>
