@@ -1,61 +1,48 @@
-# sportTicket
-Sporticket is a full-fledged sports ticket buying and selling platform developed in Java. This project demonstrates a robust client-server architecture using TCP sockets, a JavaFX-based GUI client, and a modular design that includes Data Access Objects (DAO), Service layers, and Domain Models.
-Features
-User Authentication:
-Users can sign up and log in, with functionality differing by role (regular user vs. admin).
+# Sporticket - Sports Ticket System
 
-Ticket Management:
 
-Buy/Sell Tickets: Users can post tickets for sale and purchase tickets from others.
-Unique Ticket IDs: Tickets are assigned unique, hidden identifiers for precise operations.
-Search Functionality: Implements custom string matching (e.g., KMP and Rabin-Karp algorithms) to search events and tickets.
-Admin Panel:
-Admins have additional controls, including viewing and deleting users and tickets.
 
-Client-Server Communication:
-The server listens for JSON-formatted requests over TCP sockets, processes them through a layered architecture, and responds accordingly.
+---
 
-Responsive GUI:
-Built with JavaFX, the GUI features dynamic, responsive layouts using modern CSS styling.
+## Overview
 
-Architecture Overview
-Domain Models (DM):
-Defines the core data structures (User, Ticket, Event).
+**Sporticket** is a comprehensive sports ticket buying and selling platform developed in Java. The project demonstrates a robust client-server architecture using TCP sockets and a sleek, modern JavaFX-based GUI. It incorporates a layered design that includes Domain Models, Data Access Objects (DAO), Service layers, and Controllers for both the server and client.
 
-DAO Layer:
-Manages data persistence using JSON files (e.g., tickets.txt, users.txt).
+---
 
-Service Layer:
-Contains business logic such as ticket transactions and balance updates.
+## Features
 
-Controller Layer (Server):
-Routes incoming JSON requests to the appropriate service methods.
+- **User Authentication & Roles:**  
+  - **Registration & Login:** Secure sign-up and login for users.
+  - **Role-Based Functionality:** Different experiences for regular users and administrators.
+  
+- **Ticket Management:**  
+  - **Buy/Sell Tickets:** Post tickets for sale or purchase tickets from other users.
+  - **Unique Ticket IDs:** Automatically generated hidden IDs ensure precise ticket operations.
+  - **Search Functionality:** Advanced string matching (KMP and Rabin-Karp) for fast event and ticket searches.
+  
+- **Admin Panel:**  
+  - Manage users and tickets with additional administrative controls.
+  
+- **Client-Server Communication:**  
+  - JSON-based messaging over TCP sockets ensures seamless data exchange.
+  
+- **Responsive & Modern GUI:**  
+  - JavaFX-based client with dynamic layouts and custom CSS for an enhanced user experience.
+  
+- **Robust Architecture:**  
+  - Clean separation of concerns with Domain Models, DAO, Service, and Controller layers.
 
-GUI (Client):
-A JavaFX application that presents a user-friendly interface for all operations, including dynamic tables for tickets and users.
+---
 
-Getting Started
-Prerequisites
-JDK 11 or later (tested with OpenJDK 23)
-Maven (or your preferred build tool)
-JavaFX libraries (configured via Maven or added to your IDE)
-Building the Project
-Clone the Repository:
-bash
-Copy
-git clone https://github.com/yourusername/sporticket.git
-Build the Project with Maven:
-bash
-Copy
-mvn clean install
-Running the Application
-Start the Server: Navigate to the server module (or jar) and run:
-bash
-Copy
-java -jar server.jar
-Run the Client GUI: Navigate to the client module (or jar) and run:
-bash
-Copy
-java -jar client.jar
-Contributing
-Contributions, issues, and feature requests are welcome! Please open an issue or submit a pull request.
+- **Domain Models (DM):** Represent core entities such as `User`, `Ticket`, and `Event`.
+- **DAO Layer:** Manages data persistence with JSON files (e.g., `tickets.txt`, `users.txt`).
+- **Service Layer:** Contains business logic for transactions, balance updates, and unique ID generation.
+- **Controller Layer (Server):** Routes JSON requests to appropriate services.
+- **JavaFX GUI (Client):** A responsive, modern interface with dynamic tables and CSS styling.
+
+---
+
+**Contributing**
+Contributions, feature requests, and issues are welcome! Please open an issue or submit a pull request.
+For major changes, please open an issue first to discuss what you would like to change.
